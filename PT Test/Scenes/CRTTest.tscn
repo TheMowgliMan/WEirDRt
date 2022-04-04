@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/CRTTest.gd" type="Script" id=1]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+
+[sub_resource type="NoiseTexture" id=2]
+flags = 2
+width = 768
+height = 415
+noise = SubResource( 1 )
+
+[sub_resource type="SphereShape" id=3]
+
+[node name="CRTTest" type="Spatial"]
+script = ExtResource( 1 )
+ray_randomness = 0.01
+create_ray_count = 512
+maximum_rays_per_calculation = 1
+ray_ticks = 32
+reflections_limit = 4
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0.000314176, 0, -0.000314176, 1, 0, -0.0487233, 3.67192 )
+current = true
+
+[node name="ViewPanel" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.975848 )
+texture = SubResource( 2 )
+
+[node name="SphereBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.73299 )
+
+[node name="Sphere" type="CSGSphere" parent="SphereBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="SphereBody"]
+shape = SubResource( 3 )

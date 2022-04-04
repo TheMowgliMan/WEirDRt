@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="NoiseTexture" id=1]
+width = 1024
+height = 1024
+
+[node name="PTPlayer" type="StaticBody"]
+
+[node name="Texture" type="Sprite3D" parent="."]
+texture = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+current = true
